@@ -26,9 +26,9 @@ public class Role extends AbstractDomainClass{
 	// inverseJoinColumns = @joinColumn(name="user_id"))
 	
 	
-	private List<User> usersarr = new ArrayList<>();
+	private List<User> users = new ArrayList<>();
 	
-	private Set<User> users;
+	private Set<User> usersset;
 
 	public String getRole() {
 		return role;
@@ -39,26 +39,26 @@ public class Role extends AbstractDomainClass{
 	}
 
 	public List<User> getUsersarr() {
-		return usersarr;
-	}
-
-	public void setUsersarr(List<User> usersarr) {
-		this.usersarr = usersarr;
-	}
-
-	public Set<User> getUsers() {
 		return users;
 	}
 
-	
-	public void setUsers(Set<User> users) {
+	public void setUsersarr(List<User> users) {
 		this.users = users;
+	}
+
+	public Set<User> getUsers() {
+		return usersset;
+	}
+
+	
+	public void setUsers(Set<User> usersset) {
+		this.usersset = usersset;
 	}
 	
 	
 	public void addUser(User user) {
-		if (!this.usersarr.contains(user)) {
-			this.usersarr.add(user);
+		if (!this.users.contains(user)) {
+			this.users.add(user);
 		}
 		
 		if(!user.getRoles().contains(this)) {
@@ -66,7 +66,7 @@ public class Role extends AbstractDomainClass{
 		}
 	}
 		public void removeUser(User user){
-			this.usersarr.remove(user);
+			this.users.remove(user);
 			user.getRoles().remove(this);
 		}
 	
